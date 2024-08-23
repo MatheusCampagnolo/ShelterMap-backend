@@ -3,16 +3,20 @@ const helmet = require("helmet");
 const cors = require("cors");
 require("dotenv").config();
 
-const app = express(); 
+const app = express();
+
+// Routes imports
+const authRoutes = require("./routes/auth");
+const shelterRoutes = require("./routes/shelters");
 
 // Middlewares
 app.use(helmet());
 app.use(cors());
 app.use(express.json());
 
-// Routes
-const authRoutes = require("./routes/auth");
+// API routes
 app.use("/api", authRoutes);
+app.use("/api/shelters", shelterRoutes);
 
 app.get("/", (req, res) => {
   res.send("ShelterMap Backend is running!");
