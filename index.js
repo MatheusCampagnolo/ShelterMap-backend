@@ -8,6 +8,9 @@ const app = express();
 // Routes imports
 const authRoutes = require("./routes/auth");
 const shelterRoutes = require("./routes/shelters");
+const categoryRoutes = require('./routes/categoryRoutes');
+const voteRoutes = require('./routes/voteRoutes');
+const shelterCategoryRoutes = require('./routes/shelterCategoryRoutes');
 
 // Middlewares
 app.use(helmet());
@@ -17,6 +20,9 @@ app.use(express.json());
 // API routes
 app.use("/api", authRoutes);
 app.use("/api/shelters", shelterRoutes);
+app.use("/api/categories", categoryRoutes);
+app.use("/api/votes", voteRoutes);
+app.use("/api/shelter-categories", shelterCategoryRoutes);
 
 app.get("/", (req, res) => {
   res.send("ShelterMap Backend is running!");
